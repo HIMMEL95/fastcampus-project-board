@@ -1,13 +1,13 @@
-package com.fastcampus.fastcampusprojectboard;
+package com.fastcampus.projectboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FastcampusProjectBoardApplication {
+public class ProjectBoardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FastcampusProjectBoardApplication.class, args);
+		SpringApplication.run(ProjectBoardApplication.class, args);
 	}
 
 }
