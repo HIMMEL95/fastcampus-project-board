@@ -36,30 +36,34 @@
 			</article>
 		</div>
 
-		<section>
-
-			<div>
-				<form>
-					<label for="articleComment" hidden>댓글</label>
-					<textarea id="articleComment" placeholder="댓글 쓰기.." rows="3"></textarea>
-					<button type="submit">쓰기</button>
+		<div class="row g-5">
+			<section>
+				<form class="row g-3">
+					<div class="col-8">
+						<label for="comment-textbox" hidden>댓글</label>
+						<textarea class="form-control" id="comment-textbox" placeholder="댓글 쓰기..." rows="3"></textarea>
+					</div>
+					<div class="col-auto">
+						<label for="comment-submit" hidden>댓글 쓰기</label>
+						<button class="btn btn-primary" id="comment-submit" type="submit">쓰기</button>
+					</div>
 				</form>
 
 				<ul>
 					<li>
 						<div>
-							<strong>Uno</strong>
-							<small><time>2022-01-01</time></small>
+							<time><small>2022-01-01</small></time>
+							<strong>Himmel</strong>
 							<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
-							Lorem ipsum dolor sit amet
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
+								Lorem ipsum dolor sit amet
 							</p>
 						</div>
 					</li>
 					<li>
 						<div>
-							<strong>Uno2</strong>
-							<small><time>2022-01-01</time></small>
+							<time><small>2022-01-01</small></time>
+							<strong>Himmel</strong>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>
 								Lorem ipsum dolor sit amet
@@ -67,14 +71,25 @@
 						</div>
 					</li>
 				</ul>
-			</div>
+			</section>
+		</div>
 
-			<nav>
-				<a href="#">이전 글</a>
-				<a href="#">다음 글</a>
+		<div class="row g-5">
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo; prev</span>
+						</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+							<span aria-hidden="true">next &raquo;</span>
+						</a>
+					</li>
+				</ul>
 			</nav>
-		</section>
-
+		</div>
 	</main>
 	<!-- footer 삽입부 -->
 	<footer id="footer"></footer>
