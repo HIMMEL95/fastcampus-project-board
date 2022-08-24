@@ -1,12 +1,16 @@
 package com.fastcampus.projectboard.service;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -51,9 +55,22 @@ class ArticleServiceTest {
         // Given
 
         // When
-        ArticleDto articles = sut.searchArticle(1L);  // 제목, 본문, ID, 닉네임, 해시태그
+        ArticleDto articles = sut.searchArticle(1L); // 제목, 본문, ID, 닉네임, 해시태그
 
         // Then
         assertThat(articles).isNotNull();
+    }
+
+    @DisplayName("게시글 정보를 입력하면, 게시글을 생성한다.")
+    @Test
+    void givenArticleInfo_whenSavingArticle_thenSavesArticle() {
+        // Given
+        BDDMockito.willDoNothing().given(articleRepository.save(any(Article.class)));
+
+        // When
+        sut.saveArticle(ArticleDto.of(LocalDateTime.now(), "Himmel", "title", "content", "#java"));
+
+        // Then (검사 방식)
+        BDDMockito.then(articleRepository).should().save(any(Article.class));
     }
 }
