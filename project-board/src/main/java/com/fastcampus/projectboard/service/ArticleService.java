@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fastcampus.projectboard.domain.type.SearchType;
 import com.fastcampus.projectboard.dto.ArticleDto;
+import com.fastcampus.projectboard.dto.ArticleUpdateDto;
 import com.fastcampus.projectboard.repository.ArticleRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -32,6 +33,12 @@ public class ArticleService {
 
 
     public void saveArticle(ArticleDto dto) {
+    }
+
+    public void updateArticle(long articleId, ArticleUpdateDto dto) {
+    }
+
+    public void deleteArticle(long articleId) {
     }
     
 }

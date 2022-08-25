@@ -19,6 +19,7 @@ import org.springframework.data.domain.Page;
 import com.fastcampus.projectboard.domain.Article;
 import com.fastcampus.projectboard.domain.type.SearchType;
 import com.fastcampus.projectboard.dto.ArticleDto;
+import com.fastcampus.projectboard.dto.ArticleUpdateDto;
 import com.fastcampus.projectboard.repository.ArticleRepository;
 
 @DisplayName("비즈니스 로직 - 게시글")
@@ -65,12 +66,38 @@ class ArticleServiceTest {
     @Test
     void givenArticleInfo_whenSavingArticle_thenSavesArticle() {
         // Given
-        BDDMockito.willDoNothing().given(articleRepository.save(any(Article.class)));
+        BDDMockito.given(articleRepository.save(any(Article.class))).willReturn(null);
 
         // When
         sut.saveArticle(ArticleDto.of(LocalDateTime.now(), "Himmel", "title", "content", "#java"));
 
         // Then (검사 방식)
         BDDMockito.then(articleRepository).should().save(any(Article.class));
+    }
+    
+    @DisplayName("게시글의 Id와 수정 정보를 입력하면, 게시글을 수정한다.")
+    @Test
+    void givenArticleIdAndModifiedInfo_whenUpdatingArticle_thenUpdatesArticle() {
+        // Given
+        BDDMockito.given(articleRepository.save(any(Article.class))).willReturn(null);
+
+        // When
+        sut.updateArticle(1L, ArticleUpdateDto.of("title", "content", "#java"));
+
+        // Then (검사 방식)
+        BDDMockito.then(articleRepository).should().save(any(Article.class));
+    }
+
+    @DisplayName("게시글의 Id를 입력하면, 게시글을 삭제한다.")
+    @Test
+    void givenArticleIdInfo_whenDeletingArticle_thenDeletesArticle() {
+        // Given
+        BDDMockito.willDoNothing().given(articleRepository).delete(any(Article.class));
+
+        // When
+        sut.deleteArticle(1L);
+
+        // Then (검사 방식)
+        BDDMockito.then(articleRepository).should().delete(any(Article.class));
     }
 }
